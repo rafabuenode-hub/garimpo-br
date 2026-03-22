@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garimpo BR — As Melhores Ofertas da Internet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #E60023;
+            --red-dark: #c4001e;
+            --dark: #111111;
+            --gray-900: #1a1a1a;
+            --gray-700: #333;
+            --gray-400: #888;
+            --gray-200: #e0e0e0;
+            --white: #ffffff;
+            --gold: #FFB800;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(230, 0, 35, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(255, 184, 0, 0.08) 0%, transparent 50%),
+                var(--dark);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        .logo span { color: var(--red); }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--gray-400);
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 0.8s ease-out 0.15s both;
+        }
+
+        .stores {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .store-badge {
+            background: var(--gray-900);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--white);
+            transition: all 0.3s ease;
+            animation: fadeUp 0.8s ease-out both;
+        }
+
+        .store-badge:nth-child(1) { animation-delay: 0.3s; }
+        .store-badge:nth-child(2) { animation-delay: 0.45s; }
+        .store-badge:nth-child(3) { animation-delay: 0.6s; }
+
+        .store-badge:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(230, 0, 35, 0.15);
+        }
+
+        .store-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .amazon-icon { background: #FF9900; color: #111; }
+        .shopee-icon { background: #EE4D2D; color: #fff; }
+        .ml-icon { background: #FFE600; color: #111; }
+
+        .cta-section {
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 0.8s ease-out 0.75s both;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--red-dark);
+            transform: scale(1.05);
+            box-shadow: 0 8px 40px rgba(230, 0, 35, 0.3);
+        }
+
+        .features {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--gray-900);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(255,255,255,0.12);
+            transform: translateY(-2px);
+        }
+
+        .feature-emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--gray-400);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer a {
+            color: var(--red);
+            text-decoration: none;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .logo { font-size: 2.5rem; }
+            .tagline { font-size: 1rem; }
+            .stores { gap: 1rem; }
+            .store-badge { padding: 1rem 1.5rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="logo">Garimpo <span>BR</span></div>
+        <p class="tagline">As melhores ofertas da internet, garimpadas para você</p>
+
+        <div class="stores">
+            <div class="store-badge">
+                <div class="store-icon amazon-icon">A</div>
+                Amazon
+            </div>
+            <div class="store-badge">
+                <div class="store-icon shopee-icon">S</div>
+                Shopee
+            </div>
+            <div class="store-badge">
+                <div class="store-icon ml-icon">M</div>
+                Mercado Livre
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="https://br.pinterest.com/rafabuenode/" class="cta-button">
+                Siga no Pinterest &#10148;
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Por que seguir o Garimpo BR?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-emoji">🔥</div>
+                <h3>Ofertas Selecionadas</h3>
+                <p>Garimpamos os melhores preços das maiores lojas do Brasil todos os dias.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-emoji">⚡</div>
+                <h3>Atualização Constante</h3>
+                <p>Novas ofertas publicadas diariamente no Pinterest para você não perder nada.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-emoji">💰</div>
+                <h3>Economia Real</h3>
+                <p>Descontos reais em produtos de Amazon, Shopee e Mercado Livre.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Garimpo BR — Todos os direitos reservados</p>
+        <p style="margin-top: 0.5rem;"><a href="privacidade.html">Política de Privacidade</a></p>
+    </footer>
+</body>
+</html>
